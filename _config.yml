@@ -13,9 +13,9 @@ tagline: Zack's Blog
 author :
   name : Zack Ku
   email : gza_scnu@163.com
-  github : username
-  twitter : username
-  feedburner : feedname
+  github : Zack-Ku
+#  twitter : username
+#  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
