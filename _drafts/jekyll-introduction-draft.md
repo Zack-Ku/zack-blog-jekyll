@@ -99,7 +99,6 @@ Jekyll expects your website directory to be laid out like so:
             |-- style.css
         |-- javascripts
 
-
 - **\_config.yml**
 	Stores configuration data.
 
