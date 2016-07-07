@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/_config.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/_data/navigation.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/_layouts/home.html" charset="UTF-8" />
   </component>
 </project>
