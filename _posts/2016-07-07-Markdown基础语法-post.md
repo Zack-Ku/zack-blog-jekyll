@@ -1,0 +1,114 @@
+---
+layout: post
+category : lessons
+tagline: "Supporting tagline"
+tags : [markdown, 博客]
+---
+{% include JB/setup %}
+
+这是我博客的第一篇文章。因为第一次使用Markdown，先写本文用于学习与总结，作为博客之路的开篇。
+网上查看了好多关于Markdown的资料，大多都是零散或者没有关注重点。本篇总结就是为了写博文而生，当本文完成之时，即掌握Markdown之时。
+
+
+-------------
+
+# 换行
+Markdown中，换行并非一个回车就能换行，如果想换行，需要输入   
+
+        空格+空格+回车  
+        
+刚刚输入了，来到这里，否则换行输入满屏才能自动换行的。  
+实际上只要输入多于两个空格再按回车都可以换行。
+
+
+-------------
+
+# 空格缩进
+Markdown中，直接输入多个空格，多余不会解释出来，就像html那样。
+
+        半方大的空白 &ensp; 或 &#8194;
+        全方大的空白 &emsp; 或 &#8195;
+        不断行的空白格 &nbsp; 或 &#160;
+
+一般用 `&nbsp;`就行了，比较容易记 *牛逼superman* 前后加 *&* 和 *；*
+     
+>效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;果&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;！
+
+
+-------------
+
+# 标题
+标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。
+
+        # 一级标题
+        ## 二级标题
+        ### 三级标题
+
+以此类推 # 越多，标题越小。  
+效果如下：  
+![markdown title](/assets/photo/markdown-title.png)
+
+
+------------
+
+# 文本高亮
+用` （键盘左上角数字1旁边的按键）包起来的文字就会高亮
+
+        `文本`
+  
+效果 `文本`
+
+------------
+
+# 强调
+        *single asterisks*
+
+        _single underscores_
+
+        **double asterisks**
+
+        __double underscores__
+
+*single asterisks*   引用强调
+
+_single underscores_
+
+**double asterisks** 文本强调
+
+__double underscores__
+
+------------
+
+# 代码框
+*连续4个空格以上（等长以上tab）* 然后输入文字，文字就会在代码框中
+
+        function log(str) {
+              console.log(str)
+        }
+
+------------
+
+# 图片
+
+        ![markdown tips](/assets/photo/markdown-title.png)
+
+*[]*中填写图片的tips,*()*填写图片路径
+
+------------
+
+# 链接
+
+        [an example](https://zack-ku.github.io/ "Title")         指向link有title
+        [This link](https://zack-ku.github.io/)                  无title
+        <https://zack-ku.github.io//>                            自动链接
+
+效果：
+
+[{{site.tagline}}](https://zack-ku.github.io/ "{{site.title}}")
+
+[{{site.title}}](https://zack-ku.github.io/)
+
+<https://zack-ku.github.io//>
+
+------------
+**ref :**<http://wowubuntu.com/markdown> Markdown 语法说明 (简体中文版)
