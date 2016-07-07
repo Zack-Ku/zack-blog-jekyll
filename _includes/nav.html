@@ -15,9 +15,12 @@
 					<li>
 						<img src="{{ site.url }}/{{ site.logo }}" alt="{{ site.title }} photo" class="author-photo">
 						<h4>{{ site.title }}</h4>
-						<p>{{ site.description }}</p>
+						<!--<p>{{ site.description }}</p>-->
+                        <p>WeChat: zaskange</p>
+                        <p>Location: Guangzhou</p>
+                        <p>Email: {{ site.email }</p>
 					</li>
-					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+					<!--<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>-->
 					{% if site.email %}<li>
                         <a href="mailto:{{ site.email }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
                     </li>{% endif %}
