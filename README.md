@@ -11,4 +11,4 @@
 See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
 
 ## Getting Started
-<zackku.com>
+<http://zackku.com>
