@@ -54,8 +54,8 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 我们主要的目的是写blog。  
 
 #### 最简单的方法
-[github pages的主页](https://pages.github.com)   
-里面就介绍了最简单最快速，小白都会的搭建个人博客的方法(里面连git的命令都一步步告诉你)，
+[github pages的主页](https://pages.github.com) 里面就介绍了最简单最快速，
+小白都会的搭建个人博客的方法(里面连git的命令都一步步告诉你)，
 就是用github项目设置中的Automatic page generator。它会自动把你的代码清空掉，
 重构成基于jekyll的项目，并且你可以自由选择博客的主题风格，连一点代码都不需要写。
 
