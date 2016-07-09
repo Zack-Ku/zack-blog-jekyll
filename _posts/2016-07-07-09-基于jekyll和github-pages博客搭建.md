@@ -51,6 +51,7 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 ## 搭建jekyll博客
 这个环节对于刚接触的人来说感觉好像很难，其实我们并不用真正完整去学习jekyll才能搭建blog，
 我们主要的目的是写blog。  
+
 #### 最简单的方法
 <https://pages.github.com> github pages的主页  
 里面就介绍了最简单最快速，小白都会的搭建个人博客的方法(里面连git的命令都一步步告诉你)，
