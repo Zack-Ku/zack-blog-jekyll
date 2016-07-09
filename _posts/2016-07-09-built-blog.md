@@ -2,7 +2,7 @@
 layout: post
 title:  "基于jekyll和github pages博客搭建全过程(一)"
 date:   2016-07-09
-excerpt: "从0开始，搭建一个拥有私人域名的专属geek博客。"
+excerpt: "从0开始，搭建一个拥有私人域名的专属geek博客。博客的初步搭建。"
 feature: /assets/img/blz.jpg
 tag:
 - lessons 
