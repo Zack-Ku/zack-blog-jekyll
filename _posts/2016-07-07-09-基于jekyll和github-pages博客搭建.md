@@ -58,7 +58,7 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 就是用github项目设置中的Automatic page generator。它会自动把你的代码清空掉，
 重构成基于jekyll的项目，并且你可以自由选择博客的主题风格，连一点代码都不需要写。
 
-！[github setting](/assets/img/githubpages.png)
+![github setting](/assets/img/githubpages.png)
 
 
 
