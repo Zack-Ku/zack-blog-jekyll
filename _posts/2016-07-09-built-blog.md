@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "基于jekyll和github pages博客搭建全过程"
+title:  "基于jekyll和github pages博客搭建全过程(一)"
 date:   2016-07-09
 excerpt: "从0开始，搭建一个拥有私人域名的专属geek博客。"
 feature: /assets/img/blz.jpg
@@ -70,4 +70,22 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 另外你可以上github去搜索多人关注的jekyll项目，fork一个。
 
 ------------------------------------
-**参考 :**
+
+## 博客编写
+一般jekyll的文件目录结构如下
+![folder of jekyll](/assets/img/folder-of-jekyll.png)
+虽然不同模板可能不尽相同，但是一定会有 **_posts** 这个文件夹，
+而这个文件夹正是编写博客的地方，如果不关注网站的其他方面，那只管在这文件夹里面写博客就好了。  
+在这个文件夹里面新增一个.md格式的文件，文件名格式一般需要以日期开头，标题结尾，如  
+        `2016-07-09-how-to-build-a-blog`  
+注意文件名不能有空格，否则在用url读取时会出现问题。  
+至于博客具体编写是需要用到**Markdown**的。这语言非常容易学，不用5分钟就可以学会使用了。  
+具体的基础语法可见本博客 [Markdown基础语法](zackku.com/Markdown/ "点击打开")
+
+------------------------------------
+到这为止，你已经拥有一个专属的个人博客，并且可以在上面自由的撰写美文了。  
+具体的关于jekyll的深入，和域名、DNS配置，请留意下篇博文
+**参考 :**      
+<https://pages.github.com>  github pages主页
+
+<http://jekyllcn.com/>  jekyll中文主页
