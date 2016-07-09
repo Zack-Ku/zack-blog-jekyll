@@ -10,7 +10,7 @@ tag:
 - github pages
 - 域名
 - DNS
-comments: true
+comments: false
 ---
 
 
