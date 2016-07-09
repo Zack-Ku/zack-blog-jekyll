@@ -86,7 +86,8 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 到这为止，你已经拥有一个专属的个人博客，并且可以在上面自由的撰写美文了。  
 具体的关于jekyll的深入，和域名、DNS配置，请留意下篇博文。  
 
-**参考 :**      
+**参考 :**  
+
 <https://pages.github.com>  github pages主页
 
 <http://jekyllcn.com/>  jekyll中文主页
