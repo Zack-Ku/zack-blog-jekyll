@@ -62,10 +62,12 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 ![github setting](/assets/img/githubpages.png)
 
 #### 定制的方法
-<http://jekyllthemes.io>  
+<http://jekyllthemes.io>   
+  
 <http://jekyllthemes.org>     
 上面有直接下载的jekyll模板，不过每个模板的功能都不一样，你要想很好的使用它，
 你需要一点代码的功底和前端的知识才能比较轻松的定制出自己的blog。
 另外你可以上github去搜索多人关注的jekyll项目，fork一个。
+
 ------------------------------------
 **参考 :**
