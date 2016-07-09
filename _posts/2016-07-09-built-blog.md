@@ -9,8 +9,6 @@ tag:
 - blog
 - jekyll
 - github pages
-- 域名
-- DNS
 comments: false
 ---
 
