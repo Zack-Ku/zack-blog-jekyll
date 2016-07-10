@@ -13,6 +13,9 @@ comments: false
 ---
 
 [基于jekyll和github pages博客搭建全过程(二)](http://zackku.com/built-blog-2)  
+ 
+ 
+[基于jekyll和github pages博客搭建全过程(一)](http://zackku.com/built-blog-3)
 
 #### 为什么要搭建这样的一个博客
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一直以来，所有信息的记录几乎都是用印象笔记的，包括工作的note、日常随手、一些学习记录。
