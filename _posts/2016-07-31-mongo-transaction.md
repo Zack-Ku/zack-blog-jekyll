@@ -63,7 +63,7 @@ comments: false
 ## mongodb自带的原子操作
 虽然mongodb没有事务处理，但是它自带一些原子性的复合操作。在某些特定场景下使用能达到事务的效果，当然缺陷就是只能是特定的某些场景。
 
-1. `[db.module.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/)` 先查找后更新操作      
+1. [db.module.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/) 先查找后更新操作      
     例如一个图书管理系统，查一本书是否可以借阅。那么首先需要找到这本书，然后判断书的借阅状态，若未必借阅，则把状态设置为已借阅，
     把书借阅出去。使用这个函数就可以达到先查找后更新的原子操作。      
         
@@ -77,7 +77,7 @@ comments: false
         })
         
 2. `update with upsert`  先查找后插入操作       
-    对应上述场景一，比较适合用这种方法
+    对应上述场景一，比较适合用这种方法。
     其他常用的原子操作命令
 
 -----
