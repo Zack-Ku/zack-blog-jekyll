@@ -76,8 +76,8 @@ comments: false
             }
         })
         
-2. `update with upsert`  先查找后插入操作       
-    对应上述场景一，比较适合用这种方法。
+2. [update with upsert](https://docs.mongodb.com/manual/reference/method/db.collection.update/)  先查找后插入操作             
+    对应上述场景一，比较适合用这种方法。更新一条记录，若记录不存在则创建。例如
     其他常用的原子操作命令
 
 -----
