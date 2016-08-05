@@ -61,7 +61,8 @@ comments: false
 -------
 
 ## mongodb自带的原子操作
-虽然mongodb没有事务处理，但是它自带一些原子性的复合操作。在某些特定场景下使用能达到事务的效果，当然缺陷就是只能是特定的某些场景。
+虽然mongodb没有事务处理，但是它自带一些原子性的复合操作。在某些特定场景下使用能达到事务的效果，当然缺陷就是只能是特定的某些场景。    
+总结就是，能用原子操作就用原子操作。
 
 1. [db.module.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/) 先查找后更新操作      
     例如一个图书管理系统，查一本书是否可以借阅。那么首先需要找到这本书，然后判断书的借阅状态，若未必借阅，则把状态设置为已借阅，
@@ -76,6 +77,17 @@ comments: false
             }
         })
         
+   [其他操作符](http://www.runoob.com/mongodb/mongodb-atomic-operations.html):    
+   `$unset` (删除一个field)     
+   `$inc` (对文档的某个值为数字型的field进行增减的操作)    
+   `$push` (把value追加到field里面去，field一定要是数组类型才行，如果field不存在，会新增一个数组类型加进去)      
+   `$pushAll` (同$push,只是一次可以追加多个值到一个数组字段内)     
+   `$pull` (从数组field内删除一个等于value值)     
+   `$addToSet` (增加一个值到数组内，而且只有当这个值不在数组内才增加)     
+   `$pop` (删除数组的第一个或最后一个元素)     
+   `$rename` (修改字段名称)     
+   `$bit` (位操作，integer类型)
+   
 2. [update with upsert](https://docs.mongodb.com/manual/reference/method/db.collection.update/)  先查找后插入操作             
     对应上述场景一，比较适合用这种方法。更新一条记录，若记录不存在则创建。例如
     其他常用的原子操作命令
