@@ -88,9 +88,26 @@ comments: false
    `$rename` (修改字段名称)     
    `$bit` (位操作，integer类型)
    
-2. [update with upsert](https://docs.mongodb.com/manual/reference/method/db.collection.update/)  先查找后插入操作             
+2. [update with upsert](https://docs.mongodb.com/manual/reference/method/db.collection.update/)  更新插入(upsert = update & insert)             
     对应上述场景一，比较适合用这种方法。更新一条记录，若记录不存在则创建。例如
-    其他常用的原子操作命令
+            
+            User.update({id : user_id }, param , { upsert : true })
 
------
+    上面的例子，若查找不到id为user_id的文档，则插入数据为param的文档。这样可避免先查找后插入的并发问题。
+    
+3. [update/remove with $isolated](https://docs.mongodb.com/manual/reference/operator/update/isolated/) 文档隔离     
+    >Prevents a write operation that affects multiple documents from yielding to other reads or writes once the first document is written. By using the $isolated option, you can ensure that no client sees the changes until the operation completes or errors out.
+    
+    >This behavior can significantly affect the concurrency of the system as the operation holds the write lock much longer than normal for storage engines that take a write lock (e.g. MMAPv1), or for document-level locking storage engine that normally do not take a write lock (e.g. WiredTiger), $isolated operator will make WiredTiger single-threaded for the duration of the operation.
+    总结的说就是在update/remove操作的时候，把选中的文档进行加锁，直到操作完成或错误退出。在这加锁的过程中，不允许其他操作读取和写入这些文档。
+    
+            db.foo.update(
+                { status : "A" , $isolated : 1 },
+                { $inc : { count : 1 } },
+                { multi: true }
+            )
+
+    在上面这个例子当中，如果没有`$isolated`，由于是多multi操作，若有其他操作对这些文档读取写入，会破坏文档的正确数据。
+    
+-------------
 更新中....
