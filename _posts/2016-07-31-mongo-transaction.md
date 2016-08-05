@@ -98,7 +98,9 @@ comments: false
 3. [update/remove with $isolated](https://docs.mongodb.com/manual/reference/operator/update/isolated/) 文档隔离     
     >Prevents a write operation that affects multiple documents from yielding to other reads or writes once the first document is written. By using the $isolated option, you can ensure that no client sees the changes until the operation completes or errors out.
     
+    
     >This behavior can significantly affect the concurrency of the system as the operation holds the write lock much longer than normal for storage engines that take a write lock (e.g. MMAPv1), or for document-level locking storage engine that normally do not take a write lock (e.g. WiredTiger), $isolated operator will make WiredTiger single-threaded for the duration of the operation.
+    
     总结的说就是在update/remove操作的时候，把选中的文档进行加锁，直到操作完成或错误退出。在这加锁的过程中，不允许其他操作读取和写入这些文档。
     
             db.foo.update(
