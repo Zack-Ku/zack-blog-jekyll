@@ -103,16 +103,16 @@ MongoDB中的一个accounts集合保存了账户的name和余额balance信息，
 1. 完成设置事务状态为done后，你需要完全提交这个事务，而不能进行回滚操作。可以创建一个新的事务来转换源和目标的文档。
 2. 完成设置事务状态为pending和d.将事务状态设置为commited之间，你需要执行下面的步骤：
     
-    //设置事务状态为canceling
-    db.transactions.update({_id: t._id, state: "pending"}, {$set: {state: "canceling"}})   
+         //设置事务状态为canceling
+          db.transactions.update({_id: t._id, state: "pending"}, {$set: {state: "canceling"}})   
     
-    //回滚事务：执行一系列的相反的操作。
-    db.accounts.update({name: t.source, pendingTransactions: t._id}, {$inc: {balance: t.value}, $pull: {pendingTransactions: t._id}})
-    db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})
-    db.accounts.find()
-   
-    //设置事务状态为canceled.
-    db.transactions.update({_id: t._id}, {$set: {state: "canceled"}})
+          //回滚事务：执行一系列的相反的操作。
+           db.accounts.update({name: t.source, pendingTransactions: t._id}, {$inc: {balance: t.value}, $pull: {pendingTransactions: t._id}})
+          db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})
+          db.accounts.find()
+          
+          //设置事务状态为canceled.
+           db.transactions.update({_id: t._id}, {$set: {state: "canceled"}})
 
 
 
