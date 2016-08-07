@@ -107,7 +107,8 @@ MongoDB中的一个accounts集合保存了账户的name和余额balance信息，
     
     //回滚事务：执行一系列的相反的操作。
     db.accounts.update({name: t.source, pendingTransactions: t._id}, {$inc: {balance: t.value}, $pull: {pendingTransactions: t._id}})
-    db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})db.accounts.find()
+    db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})
+    db.accounts.find()
    
     //设置事务状态为canceled.
     db.transactions.update({_id: t._id}, {$set: {state: "canceled"}})
