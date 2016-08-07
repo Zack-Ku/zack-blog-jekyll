@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "mongodb拥有事务的解决方案"
+title:  "mongodb拥有事务的解决方案（一）"
 date:   2016-07-31
-excerpt: "从各种层面的解决方案为mongodb添加事务性的处理"
+excerpt: "从各种层面的解决方案为mongodb添加事务性的处理。Redis内存锁、mongodb的原子操作"
 feature: /assets/img/mongodb.jpg
 tag:
 - lessons 
@@ -12,12 +12,13 @@ tag:
 comments: false
 ---
 
+[mongodb拥有事务的解决方案（二）](http://zackku.com/mongo-transaction2/)  
+
 最近因为node的并发优点加上mongodb的无事务性被坑了几把，所以找了一些解决方案。  
 
 1. Redis内存锁（不可靠）
 2. 用mongodb自带的原子操作 （使用范围局限）
-3. 作业队列
-4. 二段提交
+3. 二段提交
 
 -----------
 
@@ -112,5 +113,3 @@ comments: false
 
     在上面这个例子当中，如果没有`$isolated`，由于是多multi操作，若有其他操作对这些文档读取写入，会破坏文档的正确数据。
     
--------------
-更新中....
