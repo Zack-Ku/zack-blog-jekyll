@@ -6,8 +6,8 @@ excerpt: "把文档中的数组字段拆散，分离出多个文档"
 feature: /assets/img/mongodb.jpg
 tag:
 - lessons 
-- git
-- tag
+- mongodb
+- unwind
 comments: false
 ---
 
