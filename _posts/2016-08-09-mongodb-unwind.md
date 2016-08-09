@@ -43,18 +43,9 @@ includeArrayIndex，分配一个存该数组索引的字段；preserveNullAndEmp
         {
             user_id:A_id ,
             bonus:[
-                {
-                    type:a ,
-                    amount:1000 ,
-                },
-                {
-                    type:b ,
-                    amount:2000 ,
-                },
-                {
-                    type:b ,
-                    amount:3000 ,
-                }
+                { type:a ,amount:1000 },
+                { type:b ,amount:2000 },
+                { type:b ,amount:3000 }
             ]
         }
 
