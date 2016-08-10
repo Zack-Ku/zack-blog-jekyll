@@ -33,7 +33,9 @@ comments: false
                 }
             }
             
-includeArrayIndex，分配一个存该数组索引的字段；preserveNullAndEmptyArrays，是否输出空内容。
+1. <field path> 你要打散的字段 
+2. includeArrayIndex，分配一个存该数组索引的字段 
+3. preserveNullAndEmptyArrays，是否输出空内容。
 
 -----------
 
