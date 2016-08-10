@@ -8,7 +8,7 @@ tag:
 - lessons 
 - mongodb
 - unwind
-comments: false
+comments: true
 ---
 
 在aggregate中，常常会遇到一些字段属性是数组对象，然后又需要对这些数组对象进行统计。
