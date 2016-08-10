@@ -3,7 +3,7 @@ layout: post
 title:  "mongodb拥有事务的解决方案（一）"
 date:   2016-07-31
 excerpt: "从各种层面的解决方案为mongodb添加事务性的处理。Redis内存锁、mongodb的原子操作"
-feature: /assets/img/mongodb.jpg
+feature: http://oboi2pfvn.bkt.clouddn.com/mongodb.jpg
 tag:
 - lessons 
 - mongodb

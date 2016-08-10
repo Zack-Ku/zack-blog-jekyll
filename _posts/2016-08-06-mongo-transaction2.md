@@ -3,7 +3,7 @@ layout: post
 title:  "mongodb拥有事务的解决方案（二）"
 date:   2016-08-06
 excerpt: "从各种层面的解决方案为mongodb添加事务性的处理。二段提交"
-feature: /assets/img/mongodb.jpg
+feature: http://oboi2pfvn.bkt.clouddn.com/mongodb.jpg
 tag:
 - lessons 
 - mongodb
