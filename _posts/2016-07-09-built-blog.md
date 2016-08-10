@@ -9,7 +9,7 @@ tag:
 - blog
 - jekyll
 - github pages
-comments: false
+comments: true
 ---
 
 [基于jekyll和github pages博客搭建全过程(二)](http://zackku.com/built-blog-2)  

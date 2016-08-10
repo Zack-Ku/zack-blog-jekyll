@@ -9,7 +9,7 @@ tag:
 - mongodb
 - 事务
 - 原子操作
-comments: false
+comments: true
 ---
 
 [mongodb拥有事务的解决方案（二）](http://zackku.com/mongo-transaction2/)  

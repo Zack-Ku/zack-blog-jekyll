@@ -9,7 +9,7 @@ tag:
 - mongodb
 - 事务
 - 二段提交
-comments: false
+comments: true
 ---
 
 [mongodb拥有事务的解决方案（一）](http://zackku.com/mongo-transaction/)  
