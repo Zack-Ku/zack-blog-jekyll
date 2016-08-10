@@ -8,8 +8,8 @@ tag:
 - lessons 
 - mongodb
 - unwind
-comments: false
----
+comments: true
+--------------
 
 在aggregate中，常常会遇到一些字段属性是数组对象，然后又需要对这些数组对象进行统计。
 这时候就需要用到$unwind操作符。这是一个常用的，又容易被忽略的一个操作。
