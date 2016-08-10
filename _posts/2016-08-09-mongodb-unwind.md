@@ -52,7 +52,7 @@ comments: false
             ]
         }
 
-unwind操作：
+**unwind操作：**
 
         db.user.aggregate([
             {$unwind:bonus}
@@ -63,7 +63,7 @@ unwind操作：
         {user_id : A_id , bonus:{type : b ,amount : 2000}}
         {user_id : A_id , bonus:{type : b ,amount : 3000}}
        
-统计：
+**统计：**
 
         db.user.aggregate([
             {$match: {user_id : A_id} },
