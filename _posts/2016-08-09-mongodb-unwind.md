@@ -3,7 +3,7 @@ layout: post
 title:  "MongoDB之$unwind操作符"
 date:   2016-08-09
 excerpt: "把文档中的数组字段拆散，分离出多个文档"
-feature: /assets/img/mongodb.jpg
+feature: http://oboi2pfvn.bkt.clouddn.com/mongodb.jpg
 tag:
 - lessons 
 - mongodb
