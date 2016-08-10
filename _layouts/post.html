@@ -40,8 +40,8 @@ layout: compress
         </div>
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
-        <section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ url }}"></div></section>
-        <div class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="feature" data-content="{{ page.title }}--Zack's Blog" data-url="{{ site.url }}{{ url }}">
+        <section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="window.location.href"></div></section>
+        <div class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="feature" data-content="{{ page.title }}--Zack's Blog" data-url="window.location.href ">
             <div class="ds-share-aside-right">
                 <div class="ds-share-aside-inner">
                 </div>
