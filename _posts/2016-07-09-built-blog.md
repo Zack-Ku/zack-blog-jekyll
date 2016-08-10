@@ -62,7 +62,7 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 就是用github项目设置中的Automatic page generator。它会自动把你的代码清空掉，
 重构成基于jekyll的项目，并且你可以自由选择博客的主题风格，连一点代码都不需要写。
 
-![github setting](/assets/img/githubpages.png)
+![github setting](http://oboi2pfvn.bkt.clouddn.com/githubpages.png)
 
 #### 定制的方法
 <http://jekyllthemes.io>   
@@ -76,7 +76,7 @@ username是你github的用户名，像本博客之前的域名就是`zack-ku.git
 
 ## 博客编写
 一般jekyll的文件目录结构如下
-![folder of jekyll](/assets/img/folder-of-jekyll.png)
+![folder of jekyll](http://oboi2pfvn.bkt.clouddn.com/folder-of-jekyll.png)
 虽然不同模板可能不尽相同，但是一定会有 **_posts** 这个文件夹，
 而这个文件夹正是编写博客的地方，如果不关注网站的其他方面，那只管在这文件夹里面写博客就好了。
 在这个文件夹里面新增一个.md格式的文件，文件名格式一般需要以日期开头，标题结尾，如  
