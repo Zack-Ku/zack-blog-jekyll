@@ -38,7 +38,7 @@ layout: compress
                 </div>
             </div>
         </div>
-        {% if page.comments and site.disqus_shortname %}<section id="disqus_thread" class="animated fadeInUp"></section><div class="ds-thread" data-thread-key="{{site.url}}/posts/" data-title="{{ page.title }}" data-url="{{ site.url }}{{ post.url }}"></div><!-- /#disqus_thread -->{% endif %}
+        {% if page.comments and site.disqus_shortname %}<section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{site.url}}/posts/" data-title="{{ page.title }}" data-url="{{ site.url }}{{ post.url }}"></div></section><!-- /#disqus_thread -->{% endif %}
     </header>
     {% include scripts.html %}
     {% if site.mathjax == true %}
