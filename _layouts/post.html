@@ -40,24 +40,27 @@ layout: compress
         </div>
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
-        <div id="disqus_thread2" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
-            <div class="ds-share-inline">
-                <ul  class="ds-share-icons-16">
 
-                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-                    <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                    <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <section id="disqus_thread" class="animated fadeInUp">
+            <div id="disqus_thread2" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
+                <div class="ds-share-inline">
+                    <ul  class="ds-share-icons-16">
 
-                </ul>
-                <div class="ds-share-icons-more">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+                    </ul>
+                    <div class="ds-share-icons-more">
+                    </div>
                 </div>
             </div>
-        </div>
-        <section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}"></div></section>
+            <div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}"></div>
+        </section>
         <script>
             var commentDiv = document.getElementById('disqus_thread')
             commentDiv.setAttribute('data-url',window.location.href)
-            var commentDiv2 = documment.getElementById("disqus_thread2")
+            var commentDiv2 = document.getElementById("disqus_thread2")
             commentDiv2.setAttribute('data-url',window.location.href)
         </script>
         {% endif %}
