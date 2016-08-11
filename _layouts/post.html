@@ -66,8 +66,8 @@ layout: compress
     <script>
         var url = window.location.href;
         alert(url)
-        document.getElementById('disqus_thread').data-url(url)
-        document.getElementById('disqus_thread2').data-url(url)
+        document.getElementById('disqus_thread').data-url = url
+        document.getElementById('disqus_thread2').data-url = url
     </script>
 </body>
 </html>
