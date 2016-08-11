@@ -7,14 +7,6 @@ layout: compress
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
 <head>
-    <script>
-        window.onload=function (){
-            var url = window.location.href;
-            alert(url);
-            var el = document.createElement('div');
-            el.setAttribute('data-url', url);
-        }
-    </script>
     {% include head.html %}
 </head>
 <body>
@@ -49,7 +41,7 @@ layout: compress
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
         <section id="disqus_thread" class="animated fadeInUp">
-            <div id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
+            <div id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="{{window.location.href}}">
                 <div class="ds-share-inline">
                     <ul  class="ds-share-icons-16">
 
