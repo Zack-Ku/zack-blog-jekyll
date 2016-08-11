@@ -40,7 +40,6 @@ layout: compress
         </div>
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
-
         <section id="disqus_thread" class="animated fadeInUp">
             <div id="disqus_thread2" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
                 <div class="ds-share-inline">
@@ -57,13 +56,6 @@ layout: compress
             </div>
             <div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}"></div>
         </section>
-        <script>
-            var commentDiv = document.getElementById('disqus_thread')
-            alert(window.location.href)
-            commentDiv.setAttribute('data-url',window.location.href)
-            var commentDiv2 = document.getElementById("disqus_thread2")
-            commentDiv2.setAttribute('data-url',window.location.href)
-        </script>
         {% endif %}
     </header>
     {% include scripts.html %}
@@ -71,5 +63,12 @@ layout: compress
     <!-- MathJax -->
     <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     {% endif %}
+    <script>
+        var commentDiv = document.getElementById('disqus_thread')
+        alert(window.location.href)
+        commentDiv.setAttribute('data-url',window.location.href)
+        var commentDiv2 = document.getElementById("disqus_thread2")
+        commentDiv2.setAttribute('data-url',window.location.href)
+    </script>
 </body>
 </html>
