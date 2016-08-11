@@ -49,7 +49,7 @@ layout: compress
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
         <section id="disqus_thread" class="animated fadeInUp">
-            <div onload="toggleDuoshuoComments('#duoshao_share');" id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
+            <div id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
                 <div class="ds-share-inline">
                     <ul  class="ds-share-icons-16">
 
@@ -62,7 +62,7 @@ layout: compress
                     </div>
                 </div>
             </div>
-            <div id="duoshao_comment" onclick="toggleDuoshuoComments('#duoshao_comment');" class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}" ></div>
+            <div id="duoshao_comment" class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}" ></div>
         </section>
         {% endif %}
     </header>
