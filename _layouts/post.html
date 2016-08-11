@@ -8,12 +8,12 @@ layout: compress
 <!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
 <head>
     <script>
-        $(window).load(function toggleDuoshuoComments(container){
+        window.onload=function (){
             var url = window.location.href;
             alert(url);
             var el = document.createElement('div');
             el.setAttribute('data-url', url);
-        })
+        }
     </script>
     {% include head.html %}
 </head>
