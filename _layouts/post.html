@@ -40,7 +40,6 @@ layout: compress
         </div>
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
-        <section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}"></div></section>
         <div id="disqus_thread2" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
             <div class="ds-share-inline">
                 <ul  class="ds-share-icons-16">
@@ -54,6 +53,7 @@ layout: compress
                 </div>
             </div>
         </div>
+        <section id="disqus_thread" class="animated fadeInUp"><div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{site.url}}"></div></section>
         <script>
             var commentDiv = document.getElementById('disqus_thread')
             commentDiv.setAttribute('data-url',window.location.href)
