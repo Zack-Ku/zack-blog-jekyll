@@ -9,6 +9,13 @@ layout: compress
 <head>
     <script>var duoshuoQuery = {short_name:"zackku"};</script>
     <script src="http://static.duoshuo.com/embed.js"></script>
+    <script>
+        function toggleDuoshuoComments(container){
+            var url = window.location.href;
+            var el = document.createElement('div');
+            el.setAttribute('data-url', url);
+        }
+    </script>
     {% include head.html %}
 </head>
 <body>
@@ -43,13 +50,13 @@ layout: compress
         <!--<section id="disqus_thread" class="animated fadeInUp"></section>-->
         {% if page.comments and site.disqus_shortname %}
         <section id="disqus_thread" class="animated fadeInUp">
-            <div id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
+            <div onload="toggleDuoshuoComments('#duoshao_share');" id="duoshao_share" class="ds-share flat" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-images="{{page.feature}}" data-content="{{ page.title }} -- Zack's Blog" data-url="此处请替换为分享时显示的链接地址">
                 <div class="ds-share-inline">
                     <ul  class="ds-share-icons-16">
 
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo" onclick="toggleDuoshuoComments('#duoshao_share');">微博</a></li>
-                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat" onclick="toggleDuoshuoComments('#duoshao_share');">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo" >微博</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat" >微信</a></li>
 
                     </ul>
                     <div class="ds-share-icons-more">
@@ -65,14 +72,6 @@ layout: compress
     <!-- MathJax -->
     <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     {% endif %}
-    <script>
-        function toggleDuoshuoComments(container){
-            var url = window.location.href;
-            var el = document.createElement('div');
-            el.setAttribute('data-url', url);
-            DUOSHUO.EmbedThread(el);
-            jQuery(container).append(el);
-        }
-    </script>
+
 </body>
 </html>
