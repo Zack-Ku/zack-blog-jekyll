@@ -68,8 +68,8 @@ layout: compress
     <script>
         function toggleDuoshuoComments(container){
             var url = window.location.href;
-            var el = document.getElementById('duoshao_share');//该div不需要设置class="ds-thread"
-            el.setAttribute('data-url', url);//必选参数
+            var el = document.getElementById('duoshao_share');
+            el.setAttribute('data-url', url);
             duoshuoQuery.EmbedThread(el);
             jQuery(container).append(el);
         }
