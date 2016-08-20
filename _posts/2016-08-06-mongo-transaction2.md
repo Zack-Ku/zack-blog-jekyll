@@ -33,7 +33,7 @@ comments: true
 
 ## 二段的含义
 两段指prepare阶段和commit阶段：      
-![二段提交](/assets/img/two-phase-commit.png)
+![二段提交](http://oboi2pfvn.bkt.clouddn.com/two-phase-commit.png)
 **Prepare**：TM(transaction manager)给每个参与者（resource manager）发送prepare信息。每个参与者要么直接返回失败，要么在本地执行事务（记录日志和rollback的信息），但不commit。         
 **Commit**：如果TM收到了任一参与者的失败消息或超时，那么TM会发rollback给其他的参与者，参与者会执行rollback并在最后释放锁资源。否则则发送commit让所有参与者完成事务。
  这样能保证在事务提交前尽可能完成所有能完成的工作，最后的commit是一个耗时很短的操作，错误概率相对很低。相比单一阶段的commit，两段式更加可靠但是会消耗更多时间，所以会提高锁资源的冲突，加大了死锁的发生几率。

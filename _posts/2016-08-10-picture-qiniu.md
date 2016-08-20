@@ -48,14 +48,22 @@ comments: true
 - 分辨率调整
 - 图片格式转换
 
-如果你觉得图片加载速度还是慢，可以降到分辨率，转换图片格式为webp。
+如果你觉得图片加载速度还是慢，在不影响体验下，可以降到分辨率，转换图片格式为webp。         
+原图    
+![原图](http://oboi2pfvn.bkt.clouddn.com/blog3.jpg)
 
+降低分辨率的图    
+![降低分辨率的图 ](http://oboi2pfvn.bkt.clouddn.com/blog3.jpg?imageView2/0/q/50)
+
+根据原图转换webp格式（一些浏览器不支持）
+![webp图 ](http://oboi2pfvn.bkt.clouddn.com/blog3.jpg?imageView2/0/format/webp)
+
+具体加载速度可以按f12看效果。      
+
+具体api文档
 [七牛图片处理api](http://developer.qiniu.com/code/v6/api/kodo-api/index.html#image)     
 
 
-**参考 :**  
 
-
-<https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/>  $unwind MongoDB
 
     
