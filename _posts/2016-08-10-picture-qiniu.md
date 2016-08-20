@@ -1,82 +1,57 @@
 ---
 layout: post
-title:  "MongoDB之$unwind操作符"
-date:   2016-08-09
-published: false
-excerpt: "把文档中的数组字段拆散，分离出多个文档"
-feature: http://oboi2pfvn.bkt.clouddn.com/mongodb.jpg
+title:  "七牛静态资源存储"
+date:   2016-08-10
+excerpt: "用七牛存储解决静态博客图片及一些静态资源加载慢的问题"
+feature: http://oboi2pfvn.bkt.clouddn.com/u=1173348224,3290803092&fm=21&gp=0.jpg
 tag:
 - lessons 
-- mongodb
-- unwind
+- 七牛
 comments: true
 ---
 
-在aggregate中，常常会遇到一些字段属性是数组对象，然后又需要对这些数组对象进行统计。
-这时候就需要用到$unwind操作符。这是一个常用的，又容易被忽略的一个操作。
+用静态博客已经有了一段时间。经常会修改博客的界面，更换图片；写博文会用一些图片。
+但是在加载这些图片的时候，由于图片大，而且是从github上读取（网络传输速率慢），
+导致在浏览博客的时候会特别不友好，一些文字加载出来了，但是一些样式和图片并没有加载出来。
+所以决定首先把加载最慢的图片放到七牛上面，大大加快加载速度。
 
 -----------
 
-## 定义
+## 为什么要使用七牛存储
+- 数据的在线托管     
+七牛采用全分布式系统架构以及存储技术，主要存储图片、音视频等静态文件，并对数据实行多机房互备和跨IDC修复，从而保障数据存储的安全性。
+- 数据的传输加速       
+七牛支持上传/下载双向加速，对于单个文件的上传没有大小限制，并且支持断点续传。七牛在全国部署了500多个加速节点，用户可以选择任意的IDC就近上传下载。
+- 云端数据处理      
+七牛提供丰富的图片处理服务，例如缩略图、图文混排、水印、自定义裁剪区域、防盗链，原图保护等。七牛还支持常见的ffmpeg音视频格式转换，视频取帧以及流媒体传输协议（HLS）。
+- 免费       
+提供了免费CDN配额：存储空间 10GB，每月下载流量 10GB，每月 PUT/DELETE 10万次请求，每月 GET 100万次请求。月流量在10GB以下的博客基本上可以一直免费使用七牛云存储CDN服务了。
+所以像本站这类的静态博客，非常适合使用七牛作为静态资源的云存储
+- 方便数据移植    
+在使用七牛之前，本站所有的图片都是放在项目源码当中的。因为项目放在github中，所以所有的图片有对应的外链，
+但是一旦项目转移到其他地方，或者更换项目，图片的外链就会对应改变，非常不便于移植。存储在七牛的话，图片的外链一直都是那一个，就不会有这种麻烦。
 
-- field 版
-    
-           { $unwind: <field path> }
-           
-- document版
-
-            {
-              $unwind:
-                {
-                  path: <field path>,
-                  includeArrayIndex: <string>,
-                  preserveNullAndEmptyArrays: <boolean>
-                }
-            }
-            
-1. \<field path\> 你要打散的字段 
-2. includeArrayIndex，分配一个存该数组索引的字段 
-3. preserveNullAndEmptyArrays，是否输出空内容。
 
 -----------
 
-## 场景
-一个用户表user，其中一个字段是一个数组对象，存的是用户的奖励信息。
-这时需要统计用户A所有奖励类型为b的总额。
+## 图片转移
+登陆七牛的网站，注册一个账号，新建一个存储空间即可以上传图片，获取外链，在博客中引用。
+![七牛存储](http://oboi2pfvn.bkt.clouddn.com/Screenshot%20from%202016-08-20%2016:40:55.png)
+这张图片链接就是七牛的外链，可以右键查看源看看。
 
-        {
-            user_id:A_id ,
-            bonus:[
-                { type:a ,amount:1000 },
-                { type:b ,amount:2000 },
-                { type:b ,amount:3000 }
-            ]
-        }
+-----------
 
-**unwind操作：**
+## 七牛图片处理APi
+七牛还提供很多关于图片处理的api。
 
-        db.user.aggregate([
-            {$unwind:bonus}
-        ])
-        
-        //结果
-        {user_id : A_id , bonus:{type : a ,amount : 1000}}
-        {user_id : A_id , bonus:{type : b ,amount : 2000}}
-        {user_id : A_id , bonus:{type : b ,amount : 3000}}
-       
-**统计：**
+- 图片裁剪
+- 分辨率调整
+- 图片格式转换
 
-        db.user.aggregate([
-            {$match: {user_id : A_id} },
-            {$unwind:bonus},
-            {$match: {'bonus.type' : b} },
-            {$group: {_id : '$user_id' , amount : {$sum : {'$bonus.amount'}} }}
-        ])
-        
-        //结果
-        {_id:A_id , amount : 5000}
-       
-        
+如果你觉得图片加载速度还是慢，可以降到分辨率，转换图片格式为webp。
+
+[七牛图片处理api](http://developer.qiniu.com/code/v6/api/kodo-api/index.html#image)     
+
 
 **参考 :**  
 
