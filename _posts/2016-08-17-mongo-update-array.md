@@ -1,86 +1,58 @@
 ---
 layout: post
-title:  "MongoDB之$unwind操作符"
-date:   2016-08-09
-published: false
-excerpt: "把文档中的数组字段拆散，分离出多个文档"
+title:  "MongoDB更新数组中某个对象的元素"
+date:   2016-08-20
+excerpt: "解决复杂的文档更新数组问题"
 feature: http://oboi2pfvn.bkt.clouddn.com/mongodb.jpg
 tag:
 - lessons 
 - mongodb
-- unwind
 comments: true
 ---
 
-在aggregate中，常常会遇到一些字段属性是数组对象，然后又需要对这些数组对象进行统计。
-这时候就需要用到$unwind操作符。这是一个常用的，又容易被忽略的一个操作。
+经常一些场景当中，需要更新数组中某个对象的元素。用$操作符即可完成这操作。可以把$理解为数组下标
 
 -----------
 
-## 定义
-
-- field 版
-    
-           { $unwind: <field path> }
-           
-- document版
+## 例子
+一个包含数组sign表文档
 
             {
-              $unwind:
-                {
-                  path: <field path>,
-                  includeArrayIndex: <string>,
-                  preserveNullAndEmptyArrays: <boolean>
-                }
+                user_id:'abc'
+                signDate:[
+                    {
+                        dateTime:'2016-8-15'
+                        isSign:1
+                    },
+                    {
+                        dateTime:'2016-8-16'
+                        isSign:0
+                    }
+                ]
             }
-            
-1. \<field path\> 你要打散的字段 
-2. includeArrayIndex，分配一个存该数组索引的字段 
-3. preserveNullAndEmptyArrays，是否输出空内容。
 
------------
+现在想把8-16那记录的isSign改成1。除了把整个数组拿出来修改再整个update回去外。
+就是用$去更新，搭配$elemMatch
 
-## 场景
-一个用户表user，其中一个字段是一个数组对象，存的是用户的奖励信息。
-这时需要统计用户A所有奖励类型为b的总额。
+          db.sign.update(
+              {
+                user_id: 'abc' ,
+                signDate:{$elemMatch:{dateTime:'2016-8-16'}} 
+              },  //查找对应记录，精确到哪些数组
+              {$set: {'signDate.$.isSign':1}})   //更新找到的记录,$代表获取的下标
+              
+这个方法可以更新多条记录，不过最后要加上`{multi:true}`。             
 
-        {
-            user_id:A_id ,
-            bonus:[
-                { type:a ,amount:1000 },
-                { type:b ,amount:2000 },
-                { type:b ,amount:3000 }
-            ]
-        }
+如果数组不是一个对象，可以不用$elemMatch。而是直接当成一个属性去查找。
 
-**unwind操作：**
+            {
+                user_id: 'aaa'
+                score:[90,88]
+            }
+     
+把上面记录score成绩小于90的记录改为100
 
-        db.user.aggregate([
-            {$unwind:bonus}
-        ])
-        
-        //结果
-        {user_id : A_id , bonus:{type : a ,amount : 1000}}
-        {user_id : A_id , bonus:{type : b ,amount : 2000}}
-        {user_id : A_id , bonus:{type : b ,amount : 3000}}
-       
-**统计：**
-
-        db.user.aggregate([
-            {$match: {user_id : A_id} },
-            {$unwind:bonus},
-            {$match: {'bonus.type' : b} },
-            {$group: {_id : '$user_id' , amount : {$sum : {'$bonus.amount'}} }}
-        ])
-        
-        //结果
-        {_id:A_id , amount : 5000}
-       
-        
-
-**参考 :**  
-
-
-<https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/>  $unwind MongoDB
-
-    
+            db.score.update(
+                {user:id:'aaa' , score:{$lt:90}},   //直接查也行, sscore:88
+                {$set:{'score.$':100}}
+            )
