@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ES6-Number.EPSILON 用法"
-date:   2016-08-20
+date:   2017-04-30
 excerpt: "处理js浮点数问题"
 feature: http://oboi2pfvn.bkt.clouddn.com/es6.jpg
 tag:
