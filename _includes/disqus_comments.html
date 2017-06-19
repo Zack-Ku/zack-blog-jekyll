@@ -1,17 +1,18 @@
 {% if site.disqus_shortname %}
-<!--<script type="text/javascript">-->
-    <!--var duoshuoQuery = {short_name:"zackku"};-->
-    <!--(function() {-->
-        <!--var ds = document.createElement('script');-->
-        <!--ds.type = 'text/javascript';ds.async = true;-->
-        <!--ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//http://v2.uyan.cc/code/uyan.js?uid=2136902';-->
-        <!--ds.charset = 'UTF-8';-->
-        <!--(document.getElementsByTagName('head')[0]-->
-        <!--|| document.getElementsByTagName('body')[0]).appendChild(ds);-->
-    <!--})();-->
-<!--</script>-->
-<!--&lt;!&ndash; UY BEGIN &ndash;&gt;-->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2136902"></script>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"zackku"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//http://v2.uyan.cc/code/uyan.js?uid=2136902';
+        ds.async = true;
+        ds.id = 'UYScript';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!--&lt;!&ndash;&lt;!&ndash; UY BEGIN &ndash;&gt;&ndash;&gt;-->
+<!--<div id="uyan_frame"></div>-->
+<!--<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2136902"></script>-->
 <!-- UY END -->
 {% endif %}
