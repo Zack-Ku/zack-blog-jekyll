@@ -6,6 +6,8 @@ excerpt: "随着微服务的发展，服务容器化已经是开发必须掌握�
 feature: http://oboi2pfvn.bkt.clouddn.com/docker.png
 tag:
 - docker 
+- Dockerfile
+- docker-compose
 comments: true
 ---
 
