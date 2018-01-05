@@ -57,7 +57,7 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 基础镜像一般不以ubunut或centos为基础构建，这些版本docker镜像至少要几百M，构建出来体积太大，而且很多功能不需要，而且很占空间和带宽。所以大多基础镜像的构建是基于alpine构建的，一般才几十M。apline最linux可运行最简单的系统，或后续需要一些系统工具例如curl、wget等都需要额外安装。
 
 简单的镜像可以在
-[docker-library](https://github.com/docker-library)，找到对应的官方Dockerfile，然后再此基础上修改。   
+[docker-library](https://github.com/docker-library) 找到对应的官方Dockerfile，然后再此基础上修改。   
 下面以构建java web项目为例，构建一个jdk、tomcat的基础环境镜像。
 
 	FROM openjdk:8-jre-alpine
