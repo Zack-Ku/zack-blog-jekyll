@@ -29,7 +29,9 @@ Dockerfile是用于构建镜像用的，指定某个镜像，执行一系列的�
 
 	RUN yum -y update; yum clean all
 	RUN yum -y install epel-release; yum clean all
-	RUN yum -y install nodejs npm; yum clean all	
+	RUN yum -y install nodejs npm; yum clean all
+
+	
 具体操作，参考上一节中的资料。
 ## 基础运行环境镜像构建
 docker的内部是一种层级结构，上层是依赖下层构建的。例如一个安装了node的ubuntu，上层是node，下层是ubuntu，整体加起来就是带着node环境的ubuntu。在镜像制作后上传中，如果在仓库里面，底层已经存在的话，只会上传上层，但如果中间一层更改了，即上层依赖的层变更了，中间那层开始都要重新制作上传。
