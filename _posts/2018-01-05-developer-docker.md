@@ -246,7 +246,7 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 很多时候，一个web项目需要很多依赖的服务，例如db，redis，zookeeper等等。如果想一套拉起多个容器服务，可以用docker-compose。很多人搞不清Dockerfile和docker-compose的区别，前者是构建镜像用的，一个是创建容器，即就是镜像与容器的关系，所以到底什么操作在Dockerfile里面做，什么操作在compose里面做，搞清楚这个关系就很容易区分了。     
 很多集群管理工具，像rancher、k8s都支持用docker-compose导出一套栈进来管理。
 
-以下是一个mysql、zookeeper、memcached及web服务自身的例子。执行docker-compose up即可一套拉起
+以下是一个mysql、zookeeper、memcached及web服务自身的例子。执行docker-compose up即可一套拉起。
 	
 	version: "2"
 	services:
