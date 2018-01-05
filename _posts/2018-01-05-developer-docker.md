@@ -21,6 +21,7 @@ comments: true
 提供个参考资料
 [Docker — 从入门到实践](https://www.gitbook.com/book/yeasy/docker_practice/details)
 
+
 ##Dockerfile
 Dockerfile是用于构建镜像用的，指定某个镜像，执行一系列的操作，然后形成一个新的镜像。例如制作一个带node的centos镜像
 
