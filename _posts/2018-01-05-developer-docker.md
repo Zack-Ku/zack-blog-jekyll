@@ -250,25 +250,25 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 	
 	version: "2"
 	services:
-	    mysql:
-	   		image:mysql
+		mysql:
+			image:mysql
 		zookeeper:
-		    image: zookeeper
+			image: zookeeper
 		memcached:
-   		    image: memcached
+			image: memcached
 		app:
-   			image: registry.xxxx/xxxxx:latest
-   			environment:
-     	   		- JAVA_OPTS=-server -Xms512m -Xmx512m -Xss256K -Duser.timezone=GMT+08 
-    		ports:
-     			- "8080:8080"
-   			depends_on:
-         		- memcached
-         		- zookeeper
-         		- mysql
-   		   links:
-   		   		- memcached
-         		- zookeeper
-         		- mysql
+			image: registry.xxxx/xxxxx:latest
+			environment:
+				- JAVA_OPTS=-server -Xms512m -Xmx512m -Xss256K -Duser.timezone=GMT+08 
+			ports:
+				- "8080:8080"
+			depends_on:
+				- memcached
+				- zookeeper
+				- mysql
+			links:
+				- memcached
+				- zookeeper
+				- mysql
     		
   
