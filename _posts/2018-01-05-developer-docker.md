@@ -29,9 +29,7 @@ Dockerfile是用于构建镜像用的，指定某个镜像，执行一系列的�
 
 	RUN yum -y update; yum clean all
 	RUN yum -y install epel-release; yum clean all
-	RUN yum -y install nodejs npm; yum clean all
-
-	
+	RUN yum -y install nodejs npm; yum clean all	
 具体操作，参考上一节中的资料。
 ## 基础运行环境镜像构建
 docker的内部是一种层级结构，上层是依赖下层构建的。例如一个安装了node的ubuntu，上层是node，下层是ubuntu，整体加起来就是带着node环境的ubuntu。在镜像制作后上传中，如果在仓库里面，底层已经存在的话，只会上传上层，但如果中间一层更改了，即上层依赖的层变更了，中间那层开始都要重新制作上传。
@@ -51,7 +49,7 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 **运行环境**，项目所依赖的基础运行环境，例如jdk、tomcat、node、npm等等。这层一般不需要变动，构建一次即可，并且可以供同类项目使用。    
 **项目服务**，业务层面可对外提供服务的层级。一般把打包好的war包、可执行的项目放这里，启动该镜像即可提供服务。     
 
-基础镜像一般不以ubunut或centos为基础构建，这些版本docker镜像至少要几百M，构建出来体积太大，而且很多功能不需要，而且很占空间和带宽。所以大多基础镜像的构建是基于alpine构建的，一般才几十M。
+基础镜像一般不以ubunut或centos为基础构建，这些版本docker镜像至少要几百M，构建出来体积太大，而且很多功能不需要，而且很占空间和带宽。所以大多基础镜像的构建是基于alpine构建的，一般才几十M。apline最linux可运行最简单的系统，或后续需要一些系统工具例如curl、wget等都需要额外安装。
 
 简单的镜像可以在
 [docker-library](https://github.com/docker-library)，找到对应的官方Dockerfile，然后再此基础上修改。   
@@ -196,7 +194,78 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 
 这里面不构建maven环境。因为maven是用于项目的构建，而不是用于执行的。项目的构建应该是构建的机器上做，以减少docker的打包成本。同时也不需要在基础镜像中指定暴露端口和启动命令，这部分应在项目镜像构建里面做。
 ## 项目执行镜像构建
+有了基础的镜像，在此层做的东西就非常简单了，只要把项目运行的东西往docker里面塞，让docker里面的服务跑起来就行了。例如java web项目，需要将war包放到docker里面的的tomcat目录，暴露对应端口，指定镜像启动命令。
+
+	FROM registry.xxxx/xxxx:latest
+
+	ENV CATALINA_HOME /usr/local/tomcat
+	ENV MODEL xxx
+	#ENV APP /app
+
+	WORKDIR $CATALINA_HOME/webapps
+
+	COPY ${MODEL}/target/*war .
+
+	EXPOSE 8080
+	CMD ["catalina.sh", "run"]
+
+到此镜像可执行的镜像已经构建完了。细心的同学可能发现了，到目前为止都没有配置过项目的启动参数。是的，镜像本身不应该包含项目的环境变量参数等，它应该在镜像启动时候指定输入。否则每次变更配置需要重新构建，重新打包上传，不利于镜像扩展使用。在后面会介绍在启动时添加环境变量的方案。
+
+## Make批处理
+构建一个镜像，经常会包含多个命令，并且很多时候需要切换执行目录或复制移动文件。所以日常开发用make来配合镜像的构建上传下载打tag是非常有必要的，特别是要制作不同产品，不同环境的镜像。
+	
+	base:
+		echo building ${NAME}-base:${TAG}
+		cp ${model}/docker/base/Dockerfile .
+		docker build -t ${REGISTRY}/${NAME}-base:${TAG} .
+		docker tag ${REGISTRY}/${NAME}-base:${TAG} ${REGISTRY}/${NAME}-base:latest
+		rm Dockerfile
+		docker push ${REGISTRY}/${NAME}-base:${TAG}
+		docker push ${REGISTRY}/${NAME}-base:latest
+		
+	war:
+   		# TODO 加MD5校验，代码没改，不用执行
+		echo package war ${model}
+		mvn -pl ${model} -am -Dmaven.test.skip=true -Denv=fenqi_dev install
+
+	local:war
+		echo building ${NAME}:${TAG}
+		cp ${model}/docker/local/Dockerfile .
+		docker build -t ${REGISTRY}/${NAME}-${model}:latest .
+		#docker build -t ${REGISTRY}/${NAME}-${model}:${TAG} .
+		#docker tag ${REGISTRY}/${NAME}-${model}:${TAG} ${REGISTRY}/${NAME}-${model}:${FIXTAG}
+		rm Dockerfile
+		#docker push ${REGISTRY}/${NAME}-${model}:${TAG}
+		#docker push ${REGISTRY}/${NAME}-${model}:${FIXTAG}
+		docker push ${REGISTRY}/${NAME}-${model}:latest
 
 ## 一键拉起一套栈
+很多时候，一个web项目需要很多依赖的服务，例如db，redis，zookeeper等等。如果想一套拉起多个容器服务，可以用docker-compose。很多人搞不清Dockerfile和docker-compose的区别，前者是构建镜像用的，一个是创建容器，即就是镜像与容器的关系，所以到底什么操作在Dockerfile里面做，什么操作在compose里面做，搞清楚这个关系就很容易区分了。     
+很多集群管理工具，像rancher、k8s都支持用docker-compose导出一套栈进来管理。
 
-**参考 :**  
+以下是一个mysql、zookeeper、memcached及web服务自身的例子
+	
+	version: "2"
+	services:
+	    mysql:
+	   		image:mysql
+		zookeeper:
+		    image: zookeeper
+		memcached:
+   		    image: memcached
+		fenqi-api:
+   			image: registry.cn-hangzhou.aliyuncs.com/zack-repository/miloan-fenqi-api:latest
+   			environment:
+     	   		- JAVA_OPTS=-server -Xms512m -Xmx512m -Xss256K -Duser.timezone=GMT+08 
+    		ports:
+     			- "8080:8080"
+   			depends_on:
+         		- memcached
+         		- zookeeper
+         		- mysql
+   		   links:
+   		   		- memcached
+         		- zookeeper
+         		- mysql
+    		
+  
