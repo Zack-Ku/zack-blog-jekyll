@@ -229,7 +229,7 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 	war:
    		# TODO 加MD5校验，代码没改，不用执行
 		echo package war ${model}
-		mvn -pl ${model} -am -Dmaven.test.skip=true -Denv=fenqi_dev install
+		mvn -pl ${model} -am -Dmaven.test.skip=true -Denv=xxx install
 
 	local:war
 		echo building ${NAME}:${TAG}
