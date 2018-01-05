@@ -253,8 +253,8 @@ docker的内部是一种层级结构，上层是依赖下层构建的。例如�
 		    image: zookeeper
 		memcached:
    		    image: memcached
-		fenqi-api:
-   			image: registry.cn-hangzhou.aliyuncs.com/zack-repository/miloan-fenqi-api:latest
+		app:
+   			image: registry.xxxx/xxxxx:latest
    			environment:
      	   		- JAVA_OPTS=-server -Xms512m -Xmx512m -Xss256K -Duser.timezone=GMT+08 
     		ports:
